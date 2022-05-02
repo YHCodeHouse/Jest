@@ -8,6 +8,7 @@
     "@babel/preset-typescript": "^7.16.7",
     "@shelf/jest-mongodb": "^2.2.2",
     "@types/jest": "^27.4.1",
+    "isomorphic-fetch": "^3.0.0",
     "jest": "^27.0.0",
     "ts-jest": "^27.1.4"
   },
