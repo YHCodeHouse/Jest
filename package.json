@@ -1,0 +1,33 @@
+{
+  "name": "jest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "devDependencies": {
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-typescript": "^7.16.7",
+    "@shelf/jest-mongodb": "^2.2.2",
+    "@types/jest": "^27.4.1",
+    "jest": "^27.0.0",
+    "ts-jest": "^27.1.4"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YHCodeHouse/Jest.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YHCodeHouse/Jest/issues"
+  },
+  "homepage": "https://github.com/YHCodeHouse/Jest#readme",
+  "dependencies": {
+    "@types/mongoose-paginate-v2": "^1.4.3",
+    "mongoose": "^6.3.1",
+    "mongoose-paginate-v2": "^1.6.3"
+  }
+}
