@@ -2,7 +2,7 @@ import "isomorphic-fetch";
 import connectDb from "../models/api/api";
 import models from "../modelSchema";
 
-describe("insert", () => {
+describe("hello", () => {
   beforeAll(async () => {
     await connectDb();
   });
@@ -29,9 +29,9 @@ describe("insert", () => {
     expect(insertedUser).toEqual(mockUser);
   });
 
-  test("the stop is Arkadian puisto", async () => {
+  test("getHello", async () => {
     // The result we are expecting from the GraphQL API
-    const arkP = {
+    const resultGraphql = {
       getHello: {
         createdAt: "2022-03-17T04:26:53.344Z",
         hospitalId: "vatech",
@@ -57,13 +57,18 @@ describe("insert", () => {
             }`
         })
       })
-        .then(async res => {
-          const ret = await res.json();
-
-          return ret;
-        })
+        .then(res => res.json())
         // The test condition itself
-        .then(res => expect(res.data).toStrictEqual(arkP))
+        .then(res => expect(res.data).toStrictEqual(resultGraphql))
     );
+  });
+  test("mock test", async () => {
+    const mockFn = jest.fn();
+    mockFn("a");
+    mockFn(["b", "c"]);
+
+    expect(mockFn).toBeCalledTimes(2);
+    expect(mockFn).toBeCalledWith("a");
+    expect(mockFn).toBeCalledWith(["b", "c"]);
   });
 });
