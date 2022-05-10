@@ -29,39 +29,39 @@ describe("hello", () => {
     expect(insertedUser).toEqual(mockUser);
   });
 
-  test("getHello", async () => {
-    // The result we are expecting from the GraphQL API
-    const resultGraphql = {
-      getHello: {
-        createdAt: "2022-03-17T04:26:53.344Z",
-        hospitalId: "vatech",
-        id: "e2e8f332-3d5e-4e87-806e-f3259f63fb38",
-        text: "aaaaa"
-      }
-    };
+  // test("getHello", async () => {
+  //   // The result we are expecting from the GraphQL API
+  //   const resultGraphql = {
+  //     getHello: {
+  //       createdAt: "2022-03-17T04:26:53.344Z",
+  //       hospitalId: "vatech",
+  //       id: "e2e8f332-3d5e-4e87-806e-f3259f63fb38",
+  //       text: "aaaaa"
+  //     }
+  //   };
 
-    // The URL of the GraphQL API server
-    return (
-      fetch("http://localhost:8000/graphql", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        // The query we are sending to the GraphQL API
-        body: JSON.stringify({
-          query: `query {
-                getHello(hospitalId:"vatech",id: "e2e8f332-3d5e-4e87-806e-f3259f63fb38") {
-                    hospitalId
-                    id
-                    text
-                    createdAt
-                }
-            }`
-        })
-      })
-        .then(res => res.json())
-        // The test condition itself
-        .then(res => expect(res.data).toStrictEqual(resultGraphql))
-    );
-  });
+  // // The URL of the GraphQL API server
+  // return (
+  //   fetch("http://localhost:8000/graphql", {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     // The query we are sending to the GraphQL API
+  //     body: JSON.stringify({
+  //       query: `query {
+  //             getHello(hospitalId:"vatech",id: "e2e8f332-3d5e-4e87-806e-f3259f63fb38") {
+  //                 hospitalId
+  //                 id
+  //                 text
+  //                 createdAt
+  //             }
+  //         }`
+  //     })
+  //   })
+  //     .then(res => res.json())
+  //     // The test condition itself
+  //     .then(res => expect(res.data).toStrictEqual(resultGraphql))
+  // );
+  // });
   test("mock test", async () => {
     const mockFn = jest.fn();
     mockFn("a");
@@ -70,5 +70,18 @@ describe("hello", () => {
     expect(mockFn).toBeCalledTimes(2);
     expect(mockFn).toBeCalledWith("a");
     expect(mockFn).toBeCalledWith(["b", "c"]);
+  });
+  test("spyon test", async () => {
+    const calculator = {
+      add: (a: number, b: number) => a + b
+    };
+
+    const spyFn = jest.spyOn(calculator, "add");
+
+    const result = calculator.add(2, 3);
+
+    expect(spyFn).toBeCalledTimes(1);
+    expect(spyFn).toBeCalledWith(2, 3);
+    expect(result).toBe(5);
   });
 });
